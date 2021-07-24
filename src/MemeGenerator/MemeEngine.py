@@ -55,9 +55,30 @@ class MemeEngine:
         x_author = x_body + (int(font.getsize(text)[0] / 4))
         y_author =  y_body + (font_size + 5)
 
-        # draw quote on image
-        draw.text((x_body,y_body), f'"{text}"', font=font)
-        draw.text((x_author, y_author), f' - {author}', font=font)
+        # define fillcolor and shadow color for outline
+        # outline configuration adapted from:
+        # https://stackoverflow.com/questions/41556771/is-there-a-way-to-outline-text-with-a-dark-line-in-pil
+        fillcolor = "white"
+        shadowcolor = "black"
+
+        # draw body of quote on image
+        # outline body
+        draw.text((x_body-1, y_body), f'"{text}"', font=font, fill=shadowcolor)
+        draw.text((x_body+1, y_body), f'"{text}"', font=font, fill=shadowcolor)
+        draw.text((x_body, y_body-1), f'"{text}"', font=font, fill=shadowcolor)
+        draw.text((x_body, y_body+1), f'"{text}"', font=font, fill=shadowcolor)
+        # text body 
+        draw.text((x_body,y_body), f'"{text}"', font=font, fill=fillcolor)
+
+        # draw author of quote on image
+        # outline author 
+        draw.text((x_author-1, y_author), f' - {author}', font=font, fill=shadowcolor)
+        draw.text((x_author+1, y_author), f' - {author}', font=font, fill=shadowcolor)
+        draw.text((x_author, y_author-1), f' - {author}', font=font, fill=shadowcolor)
+        draw.text((x_author, y_author+1), f' - {author}', font=font, fill=shadowcolor)
+
+        # text author 
+        draw.text((x_author, y_author), f' - {author}', font=font, fill=fillcolor)
 
         output_path = f'{self.output_dir}/{self.img_name}'
         img.save(os.path.join(self.output_dir, self.img_name))
