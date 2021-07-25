@@ -48,7 +48,7 @@ class MemeEngine:
 
 
         # determine random position to place quote body within image
-        x_body = random.randint(0,int(img.width*(1-img_fraction_width)))
+        x_body = random.randint(0,int(img.width*(1-(img_fraction_width+0.1))))
         y_body = random.randint(int((0+(font_size*2))), int(img.height - (font_size*4)))
 
         # determine position to place quote author
