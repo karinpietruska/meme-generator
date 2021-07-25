@@ -56,5 +56,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
+    # example url:
 
     print(generate_meme(args.path, args.body, args.author))
