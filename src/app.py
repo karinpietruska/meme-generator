@@ -3,9 +3,12 @@ import os
 import requests
 from flask import Flask, render_template, abort, request
 
-# @TODO Import your Ingestor and MemeEngine classes
+from MemeGenerator import MemeEngine
+from QuoteEngine import Ingestor
+from QuoteEngine import QuoteModel
 
 app = Flask(__name__)
+
 
 meme = MemeEngine('./static')
 
@@ -18,34 +21,29 @@ def setup():
                    './_data/DogQuotes/DogQuotesPDF.pdf',
                    './_data/DogQuotes/DogQuotesCSV.csv']
 
-    # TODO: Use the Ingestor class to parse all files in the
-    # quote_files variable
-    quotes = None
+    quotes = []
+    for in_file in quote_files:
+        quotes.extend(Ingestor.parse(in_file))
 
     images_path = "./_data/photos/dog/"
 
-    # TODO: Use the pythons standard library os class to find all
-    # images within the images images_path directory
-    imgs = None
-
+    imgs = []     
+    for root, dirs, files in os.walk(images_path):
+        for name in files:
+            if name.endswith('.jpg'):
+                imgs.append(os.path.join(root, name))
     return quotes, imgs
 
 
 quotes, imgs = setup()
 
-
 @app.route('/')
 def meme_rand():
     """ Generate a random meme """
 
-    # @TODO:
-    # Use the random python standard library class to:
-    # 1. select a random image from imgs array
-    # 2. select a random quote from the quotes array
-
-    img = None
-    quote = None
-    path = meme.make_meme(img, quote.body, quote.author)
+    img_path = random.choice(imgs)
+    quote = random.choice(quotes)
+    path = meme.make_meme(img_path,quote.body, quote.author)
     return render_template('meme.html', path=path)
 
 
@@ -59,14 +57,21 @@ def meme_form():
 def meme_post():
     """ Create a user defined meme """
 
-    # @TODO:
-    # 1. Use requests to save the image from the image_url
-    #    form param to a temp local file.
-    # 2. Use the meme object to generate a meme using this temp
-    #    file and the body and author form paramaters.
-    # 3. Remove the temporary saved image.
+    img_url = request.form["image_url"]
+    body = request.form["body"]
+    author = request.form["author"]
 
-    path = None
+    try:       
+        tmp_img_path = "./temp_img.jpg"
+        img_con = requests.get(img_url,stream=True).content
+        with open(tmp_img_path,'wb') as f:
+            f.write(img_con)
+    except Exception:
+        print("link to image not working")
+        return render_template('meme_form.html')
+    
+    path = meme.make_meme(tmp_img_path, body, author)
+    os.remove(tmp_img_path)
 
     return render_template('meme.html', path=path)
 
