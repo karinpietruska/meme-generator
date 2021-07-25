@@ -8,7 +8,7 @@ from .IngestorInterface import IngestorInterface
 
 
 class CSVIngestor(IngestorInterface):
-    """Parser to import quotes in CSV files."""
+    """Parser to import quotes from CSV files."""
 
     allowed_extensions = ["csv"]
 
