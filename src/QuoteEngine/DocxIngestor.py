@@ -1,4 +1,4 @@
-"""Module to import quotes in CSV files."""
+"""Module to import quotes from Docx Files."""
 import docx
 from typing import List
 
