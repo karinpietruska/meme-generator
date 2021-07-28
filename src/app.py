@@ -1,3 +1,4 @@
+"""Module for generating meme."""
 import random
 import os
 import requests
@@ -13,8 +14,7 @@ meme = MemeEngine('./static')
 
 
 def setup():
-    """ Load all resources """
-
+    """Load all resources."""
     quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
                    './_data/DogQuotes/DogQuotesDOCX.docx',
                    './_data/DogQuotes/DogQuotesPDF.pdf',
@@ -26,7 +26,7 @@ def setup():
 
     images_path = "./_data/photos/dog/"
 
-    imgs = []     
+    imgs = []
     for root, dirs, files in os.walk(images_path):
         for name in files:
             if name.endswith('.jpg'):
@@ -36,39 +36,38 @@ def setup():
 
 quotes, imgs = setup()
 
+
 @app.route('/')
 def meme_rand():
-    """ Generate a random meme """
-
+    """Generate a random meme."""
     img_path = random.choice(imgs)
     quote = random.choice(quotes)
-    path = meme.make_meme(img_path,quote.body, quote.author)
+    path = meme.make_meme(img_path, quote.body, quote.author)
     return render_template('meme.html', path=path)
 
 
 @app.route('/create', methods=['GET'])
 def meme_form():
-    """ User input for meme information """
+    """User input for meme information."""
     return render_template('meme_form.html')
 
 
 @app.route('/create', methods=['POST'])
 def meme_post():
-    """ Create a user defined meme """
-
+    """Create a user defined meme."""
     img_url = request.form["image_url"]
     body = request.form["body"]
     author = request.form["author"]
 
-    try:       
+    try:
         tmp_img_path = "./temp_img.jpg"
-        img_con = requests.get(img_url,stream=True).content
-        with open(tmp_img_path,'wb') as f:
+        img_con = requests.get(img_url, stream=True).content
+        with open(tmp_img_path, 'wb') as f:
             f.write(img_con)
     except Exception:
         print("link to image not working")
         return render_template('meme_form.html')
-    
+
     path = meme.make_meme(tmp_img_path, body, author)
     os.remove(tmp_img_path)
 
