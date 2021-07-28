@@ -1,5 +1,4 @@
 """Initialize QuoteEngine package"""
-from typing import List
 from .CSVIngestor import CSVIngestor
 from .DocxIngestor import DocxIngestor
 from .Ingestor import Ingestor
