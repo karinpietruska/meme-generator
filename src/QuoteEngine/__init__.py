@@ -1,8 +1,10 @@
-"""Initialize QuoteEngine package"""
-<<<<<<< HEAD
+"""
+Initialize QuoteEngine package.
 
-=======
->>>>>>> 6d206973b60005b1594400af3b8e80f6d9875015
+https://knowledge.udacity.com/questions/518614
+Implemented with help of above reference. 
+"""
+
 from .CSVIngestor import CSVIngestor
 from .DocxIngestor import DocxIngestor
 from .Ingestor import Ingestor
