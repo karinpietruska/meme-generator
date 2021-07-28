@@ -30,7 +30,7 @@ class MemeEngine:
         # write text on image
         draw = ImageDraw.Draw(img)
         font_size = 5
-        font = ImageFont.truetype("Ubuntu-B.ttf", font_size)
+        font = ImageFont.truetype("./fonts/Ubuntu-B.ttf", font_size)
         # portion of image width that the text should cover
         img_fraction_width = 0.50
 
