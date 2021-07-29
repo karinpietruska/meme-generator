@@ -59,14 +59,15 @@ def meme_post():
     body = request.form["body"]
     author = request.form["author"]
 
+    tmp_img_path = "./temp_img.jpg"
     try:
-        tmp_img_path = "./temp_img.jpg"
         img_con = requests.get(img_url, stream=True).content
-        with open(tmp_img_path, 'wb') as f:
-            f.write(img_con)
     except Exception:
         print("incorrect URL Link to image Error")
         return render_template('meme_form.html')
+
+    with open(tmp_img_path, 'wb') as f:
+        f.write(img_con)
 
     path = meme.make_meme(tmp_img_path, body, author)
     os.remove(tmp_img_path)
