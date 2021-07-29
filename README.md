@@ -56,7 +56,10 @@ width="50%"></p>
 For instance, I used the free to use dog picture in the following link: 
 https://libreshot.com/wp-content/uploads/2014/01/white-dog-eats.jpg
 
-With a quote text as displayed in the output below. 
+This image was taken by Martin Vorel and is free for download and commercial use with a CC0-Public Domain license. 
+Link to source website: https://libreshot.com/white-dog-eats-bone-2/
+
+I used the above image with a quote text as displayed in the image below. 
 
 <p align="center">
 <img src="./img/meme_example3.png" alt="Meme generator with option to create own meme."
