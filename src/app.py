@@ -65,7 +65,7 @@ def meme_post():
         with open(tmp_img_path, 'wb') as f:
             f.write(img_con)
     except Exception:
-        print("link to image not working")
+        print("incorrect URL Link to image Error")
         return render_template('meme_form.html')
 
     path = meme.make_meme(tmp_img_path, body, author)
