@@ -34,8 +34,8 @@ You will see a randomly generated meme similar to the following picture.
 width="50%"></p>
 
 
-You have the choice of randomly generating another meme, by clicking the "Random" button below the image. Alternatively you can create or own meme by clicking on the "Creator" button. 
-This opens the following template and you are asked to enter the image url, meme text and meme author. 
+You have the choice of randomly generating another meme by clicking the "Random" button below the image. Alternatively, you can create your own meme by clicking on the "Creator" button. 
+This opens the following template and you are asked to enter the image url, the body of the quote and the author of the quote.
 
 <p align="center">
 <img src="./img/meme_example2.png" alt="Meme generator with option to create own meme."
@@ -44,7 +44,7 @@ width="50%"></p>
 For instance, I used the free to use dog picture in the following link: 
 https://libreshot.com/wp-content/uploads/2014/01/white-dog-eats.jpg
 
-With the text as displayed in the output below. 
+With a quote text as displayed in the output below. 
 
 <p align="center">
 <img src="./img/meme_example3.png" alt="Meme generator with option to create own meme."
