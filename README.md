@@ -1,7 +1,7 @@
 # Meme Generator Project
 
 
-A meme generator application as a web app that dynamically generates memes by overlaying a quote on an image. 
+A meme generator application that dynamically generates memes by overlaying a quote on an image. 
 
 This project is part of the Udacity Intermediate Python Nanodegree Program.
 Please contact Udacity regarding copyright or license. 
@@ -16,7 +16,7 @@ The MemeEngine Module enables the actual generation of the meme. The submodule M
 
 Finally the application is realized with a meme.py file that can be executed via the command line with three optional arguments: path to an image file, quote body and quote author. It returns a path to the location of the generated meme image. 
 
-In addition, the application is also executable via a small Flask app (see how to run below). The web app uses the modules above to generate and display a random meme image. Alternatively the user can define an own meme image by entering an image url, a quote body and an author into the corresponding html template. 
+In addition, the application is also executable via a small Flask app (see how to run below). The Flask app uses the modules above to generate and display a random meme image. Alternatively the user can define an own meme image by entering an image url, a quote body and an author into the corresponding html template. 
 
 
 ## Installation 
