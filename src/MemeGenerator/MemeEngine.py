@@ -30,7 +30,7 @@ class MemeEngine:
         # write text on image
         draw = ImageDraw.Draw(img)
         font_size = 5
-        font = ImageFont.truetype("./fonts/Ubuntu-B.ttf", font_size)
+        font = ImageFont.truetype("../fonts/Ubuntu-B.ttf", font_size)
         # portion of image width that the text should cover
         img_fraction_width = 0.50
 
@@ -44,7 +44,7 @@ class MemeEngine:
         while font.getsize(quote_txt)[0] < img_fraction_width*img.size[0]:
             # iterate until text size has passed criteria
             font_size += 1
-            font = ImageFont.truetype("./fonts/Ubuntu-B.ttf", font_size)
+            font = ImageFont.truetype("../fonts/Ubuntu-B.ttf", font_size)
 
         # determine random position to place quote body within image
         x_body = random.randint(0, int(img.width*(1-(img_fraction_width+0.1))))
