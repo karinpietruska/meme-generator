@@ -94,8 +94,8 @@ python3  meme.py --path _data/photos/dog/xander_1.jpg --body "bark or be barked 
 
 ```
 
-The app returns the path to the saved image. In the current implementation, it is saved at:
-./tmp/meme_img.png
+The app returns the path to the saved image. In the current implementation, it is saved in the folder:
+./tmp
 
 The image of the above command line input looks like this:
 
