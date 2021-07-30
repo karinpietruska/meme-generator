@@ -2,6 +2,7 @@
 import random
 import os
 import requests
+import time
 from flask import Flask, render_template, abort, request
 
 from MemeGenerator import MemeEngine
@@ -59,7 +60,8 @@ def meme_post():
     body = request.form["body"]
     author = request.form["author"]
 
-    tmp_img_path = "./temp_img.jpg"
+    timestamp = str(time.time())
+    tmp_img_path = f'./tmp/temp_img_{timestamp}.jpg'
     try:
         img_con = requests.get(img_url, stream=True).content
     except Exception:
