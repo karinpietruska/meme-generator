@@ -11,7 +11,6 @@ class MemeEngine:
     def __init__(self, output_dir):
         """Initialize MemeEngine Instance."""
         self.output_dir = output_dir
-       
 
     def make_meme(self, img_path, text, author, width=500) -> str:
         """Generate meme and return output path to meme file."""
@@ -84,7 +83,7 @@ class MemeEngine:
 
         # text author
         draw.text((x_author, y_author), f' - {author}', font=font, fill=fillc)
-        
+
         timestamp = str(time.time())
         out_img_name = f'meme_img_{timestamp}.jpg'
         output_path = f'{self.output_dir}/{out_img_name}'
