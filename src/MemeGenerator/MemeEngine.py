@@ -2,6 +2,7 @@
 from PIL import Image, ImageDraw, ImageFont
 import random
 import os
+import time
 
 
 class MemeEngine:
@@ -10,7 +11,7 @@ class MemeEngine:
     def __init__(self, output_dir):
         """Initialize MemeEngine Instance."""
         self.output_dir = output_dir
-        self.img_name = 'meme_img.png'
+       
 
     def make_meme(self, img_path, text, author, width=500) -> str:
         """Generate meme and return output path to meme file."""
@@ -44,7 +45,7 @@ class MemeEngine:
         while font.getsize(quote_txt)[0] < img_fraction_width*img.size[0]:
             # iterate until text size has passed criteria
             font_size += 1
-            font = ImageFont.truetype("Ubuntu-B.ttf", font_size)
+            font = ImageFont.truetype("./fonts/Ubuntu-B.ttf", font_size)
 
         # determine random position to place quote body within image
         x_body = random.randint(0, int(img.width*(1-(img_fraction_width+0.1))))
@@ -83,8 +84,10 @@ class MemeEngine:
 
         # text author
         draw.text((x_author, y_author), f' - {author}', font=font, fill=fillc)
-
-        output_path = f'{self.output_dir}/{self.img_name}'
-        img.save(os.path.join(self.output_dir, self.img_name))
+        
+        timestamp = str(time.time())
+        out_img_name = f'meme_img_{timestamp}.jpg'
+        output_path = f'{self.output_dir}/{out_img_name}'
+        img.save(os.path.join(self.output_dir, out_img_name))
 
         return output_path
